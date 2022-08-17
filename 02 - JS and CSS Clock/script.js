@@ -1,24 +1,16 @@
-const secondHand = document.querySelector('.second');
-const minuteHand = document.querySelector('.minute');
-const hourHand = document.querySelector('.hour');
+const hour = document.querySelector('.hour');
+const minute = document.querySelector('.minute');
+const second = document.querySelector('.second');
 
-function setDate() {
-  const now = new Date();
-  // seconds
-  const seconds = now.getSeconds();
-  const secondsDegrees = ((seconds / 60) * 360);
-  // minutes
-  const minutes = now.getMinutes();
-  const minutesDegrees = ((minutes / 60) * 360);
-  // hours
-  const hours = now.getHours();
-  const hoursDegrees = ((hours / 12) * 360);
-  
-  secondHand.style.transform = `rotate(${secondsDegrees}deg)`;
-  minuteHand.style.transform = `rotate(${minutesDegrees}deg)`;
-  hourHand.style.transform = `rotate(${hoursDegrees}deg)`;
-  
-  console.log(hoursDegrees);
+function getDate() {
+  const date = new Date();
+  const hourDegree = date.getHours() /12 * 360;
+  const minuteDegree = date.getMinutes() / 60 * 360;
+  const secondDegree = date.getSeconds() / 60 * 360;
+
+  hour.style.transform = `rotate(${hourDegree}deg)`;
+  minute.style.transform = `rotate(${minuteDegree}deg)`;
+  second.style.transform = `rotate(${secondDegree}deg)`;
 }
 
-setInterval(setDate, 1000);
+setInterval(getDate, 1000);
